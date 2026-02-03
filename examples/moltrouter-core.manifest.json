@@ -1,0 +1,25 @@
+{
+  "capability_id": "capability:mrp/router",
+  "capability": "router",
+  "version": "0.1",
+  "tags": ["mrp", "routing", "task-graph"],
+  "inputs": [
+    {"type": "json", "schema_ref": "schema://mrp/types/json@1.0"}
+  ],
+  "outputs": [
+    {"type": "json", "schema_ref": "schema://mrp/types/json@1.0"}
+  ],
+  "constraints": {
+    "policy": ["no_pii"],
+    "max_input_tokens": 8000
+  },
+  "cost": {"unit": "usd", "estimate": 0.0},
+  "latency": {"p50": "0ms"},
+  "proofs_required": [],
+  "endpoints": {
+    "discover": "https://example.com/mrp/discover",
+    "negotiate": "https://example.com/mrp/negotiate",
+    "execute": "https://example.com/mrp/execute"
+  },
+  "note": "This is a static example manifest used for registry bootstrapping. Replace endpoints with your live service URLs."
+}
