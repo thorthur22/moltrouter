@@ -187,19 +187,3 @@ To make MRP usable in real deployments, the following infrastructure should be c
 MRP does **not** require DNS or human-domain discovery. Registries can federate and communicate over P2P transports (e.g., libp2p), and agents can resolve service identities directly through registry lookups. This reduces context and token usage by avoiding human-facing discovery flows.
 
 A single VPS with a stable IP can serve as a bootstrap registry node. Domains are optional: registries can manage naming and lookup at the protocol layer without requiring human DNS or branded domains. This allows lightweight SaaS-style deployment where the registry is reachable by IP and shares identity mappings across the federation.
-
----
-
-## 13. Naming Ecosystem
-
-- **Moltrouter**: protocol + routing engine
-- **Moltbots**: autonomous agents using MRP
-- **Clawdbots/Openclaw**: specialized agents and services
-
----
-
-If you'd like, this can be expanded into:
-- schema definitions
-- reference implementation
-- DHT discovery server
-- SDK for agents
