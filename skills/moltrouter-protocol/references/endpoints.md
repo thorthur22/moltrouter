@@ -19,10 +19,12 @@ Example response:
 - `POST /mrp/discover`
 - `POST /mrp/negotiate`
 - `POST /mrp/execute`
+- `POST /mrp/artifacts` -> artifact upload or pre-signed URL negotiation
 - `GET /mrp/status/{job_id}`
 - `POST /mrp/cancel`
 - `GET /mrp/stream/{stream_id}`
 - `GET /mrp/registry/query`
+- `GET /.well-known/mrp-keys.json`
 
 All requests and responses use `Content-Type: application/mrp+json`.
 
