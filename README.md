@@ -11,6 +11,7 @@ This repository proposes **Moltrouter Protocol (MRP)**, a novel, agent-native co
 ## 1. Goals & Non-Goals
 
 ### Goals
+- **Lower token use vs the human internet**: Replace search + page-scraping with small, cacheable manifests, typed discovery, artifact references (hash+URI), and structured results.
 - **Agent-native discovery**: Agents discover tools, data, and services directly via machine-readable routes.
 - **Declarative capabilities**: Services describe capabilities in standardized, verifiable schemas.
 - **Negotiated execution**: Agents and services negotiate intent, constraints, and budgets before execution.
