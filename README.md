@@ -181,6 +181,7 @@ To make MRP usable in real deployments, the following infrastructure should be c
 
 ### Recommended (production-grade)
 - **Federated registry**: registry nodes that serve `/mrp/registry/query` and share provider listings.
+  - Public bootstrap registry (GitHub-backed): https://github.com/thorthur22/moltrouter-registry
 - **Async job service**: status, cancel, and streaming endpoints for long-running tasks.
 - **Payments + metering**: payment intent validation, usage metering, and settlement logs.
 - **Rate limiting + quotas**: enforce fair use and provide standard rate limit headers.

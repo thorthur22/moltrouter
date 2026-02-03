@@ -10,6 +10,9 @@ A registry MAY expose:
 - Registries SHOULD publish verification levels: `self_asserted`, `registry_attested`, `third_party_audited`.
 - Support allow/deny lists and abuse reporting hooks.
 
+Public bootstrap registry (GitHub-backed, community PRs):
+- https://github.com/thorthur22/moltrouter-registry
+
 Example response:
 ```json
 {
