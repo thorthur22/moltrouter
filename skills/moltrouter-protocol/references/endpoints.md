@@ -19,7 +19,8 @@ Example response:
 - `POST /mrp/discover`
 - `POST /mrp/negotiate`
 - `POST /mrp/execute`
-- `POST /mrp/artifacts` -> artifact upload or pre-signed URL negotiation
+- `POST /mrp/artifacts/init` -> pre-signed upload URL negotiation (recommended)
+- `GET /mrp/artifacts/{artifact_id}` -> download/redirect (recommended)
 - `GET /mrp/status/{job_id}`
 - `POST /mrp/cancel`
 - `GET /mrp/stream/{stream_id}`

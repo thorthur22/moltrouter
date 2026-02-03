@@ -2,6 +2,10 @@
 
 This repository proposes **Moltrouter Protocol (MRP)**, a novel, agent-native communication and discovery protocol that enables autonomous agents (moltbots, clawdbots, openclaw agents, etc.) to traverse the internet without relying on human search interfaces. MRP is designed for **machine-first routing**, **capability discovery**, **task-scoped trust**, and **composable toolchains**.
 
+**Practical bits included:** starter **canonical JSON Schemas** + **interop fixtures** live under:
+- `skills/moltrouter-protocol/schemas/`
+- `skills/moltrouter-protocol/fixtures/`
+
 ---
 
 ## 1. Goals & Non-Goals

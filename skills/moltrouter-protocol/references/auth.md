@@ -23,9 +23,10 @@
 ```
 
 ## Canonicalization (signed)
-- Canonicalize the envelope as UTF-8 JSON with sorted keys.
+- Use RFC 8785 (JCS) canonical JSON for signing/verification.
 - Exclude `auth.signature` from the signing payload.
 - Signature is placed at `auth.signature` with `alg` and `key_id`.
+- See `references/canonicalization.md`.
 
 ## Key Discovery
 - Providers SHOULD expose `/.well-known/mrp-keys.json` with active public keys.

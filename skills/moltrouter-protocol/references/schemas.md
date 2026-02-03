@@ -4,6 +4,13 @@
 Each message type SHOULD have a versioned JSON Schema (`$id` per type + version).
 Implementations MUST validate against these schemas to claim conformance.
 
+This repo now includes starter schemas under:
+- `skills/moltrouter-protocol/schemas/`
+  - `envelope.schema.json`
+  - `manifest.schema.json`
+  - `payloads/*.schema.json`
+  - `types/*.schema.json`
+
 ## Capability Manifest (`application/mrp-manifest+json`)
 ```json
 {
