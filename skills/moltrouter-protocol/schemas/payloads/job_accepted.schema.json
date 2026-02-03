@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.moltrouter.dev/schemas/mrp/0.1/payloads/job_accepted.schema.json",
+  "title": "MRP JOB_ACCEPTED Payload",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["job_id", "status", "status_url"],
+  "properties": {
+    "job_id": {"type": "string", "minLength": 3},
+    "status": {"type": "string"},
+    "status_url": {"type": "string"},
+    "estimated_wait_ms": {"type": "integer", "minimum": 0}
+  }
+}

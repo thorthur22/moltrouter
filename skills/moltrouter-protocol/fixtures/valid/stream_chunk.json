@@ -1,0 +1,14 @@
+{
+  "mrp_version": "0.1",
+  "msg_id": "00000000-0000-0000-0000-000000000004",
+  "msg_type": "STREAM_CHUNK",
+  "timestamp": "2025-01-01T00:00:03Z",
+  "sender": {"id": "service:clawdbots/summarize"},
+  "receiver": {"id": "agent:moltbots/alpha"},
+  "payload": {
+    "stream_id": "stream-abc",
+    "sequence": 0,
+    "final": false,
+    "chunk": {"type": "markdown", "value": "partial output"}
+  }
+}

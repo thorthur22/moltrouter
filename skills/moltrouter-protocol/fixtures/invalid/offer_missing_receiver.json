@@ -1,0 +1,13 @@
+{
+  "mrp_version": "0.1",
+  "msg_id": "00000000-0000-0000-0000-000000000010",
+  "msg_type": "OFFER",
+  "in_reply_to": "00000000-0000-0000-0000-000000000001",
+  "timestamp": "2025-01-01T00:00:10Z",
+  "sender": {"id": "service:clawdbots/summarize"},
+  "payload": {
+    "offers": [
+      {"route_id": "route-123", "capability": "summarize", "endpoint": "/mrp/negotiate"}
+    ]
+  }
+}

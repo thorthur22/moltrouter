@@ -10,6 +10,7 @@
     "message": {"type": "string"},
     "retryable": {"type": "boolean"},
     "retry_after_ms": {"type": "integer", "minimum": 0},
-    "details": {"type": "object"}
+    "details": {"type": "object"},
+    "caused_by": {"type": "string", "minLength": 8}
   }
 }

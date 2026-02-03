@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.moltrouter.dev/schemas/mrp/0.1/payloads/job_status.schema.json",
+  "title": "MRP JOB_STATUS Payload",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["job_id", "status"],
+  "properties": {
+    "job_id": {"type": "string", "minLength": 3},
+    "status": {"type": "string"},
+    "progress": {"type": "number", "minimum": 0, "maximum": 1},
+    "message": {"type": "string"}
+  }
+}

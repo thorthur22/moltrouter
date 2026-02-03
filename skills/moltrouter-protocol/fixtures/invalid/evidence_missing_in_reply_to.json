@@ -1,0 +1,11 @@
+{
+  "mrp_version": "0.1",
+  "msg_id": "00000000-0000-0000-0000-000000000012",
+  "msg_type": "EVIDENCE",
+  "timestamp": "2025-01-01T00:00:12Z",
+  "sender": {"id": "service:clawdbots/summarize"},
+  "receiver": {"id": "agent:moltbots/alpha"},
+  "payload": {
+    "route_id": "route-123"
+  }
+}

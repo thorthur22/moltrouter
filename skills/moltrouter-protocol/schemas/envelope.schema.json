@@ -8,6 +8,7 @@
   "properties": {
     "mrp_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+$"},
     "msg_id": {"type": "string", "minLength": 8},
+    "in_reply_to": {"type": "string", "minLength": 8},
     "msg_type": {
       "type": "string",
       "enum": [
@@ -74,6 +75,24 @@
   },
   "allOf": [
     {
+      "if": {"properties": {"msg_type": {"enum": ["OFFER", "NEGOTIATE", "EXECUTE", "EVIDENCE", "ERROR"]}}},
+      "then": {"required": ["in_reply_to"]}
+    },
+    {
+      "if": {
+        "properties": {
+          "msg_type": {
+            "enum": ["OFFER", "NEGOTIATE", "EXECUTE", "EVIDENCE", "JOB_ACCEPTED", "JOB_STATUS", "STREAM_CHUNK", "ERROR"]
+          }
+        }
+      },
+      "then": {"required": ["receiver"]}
+    },
+    {
+      "if": {"properties": {"msg_type": {"const": "HELLO"}}},
+      "then": {"properties": {"payload": {"$ref": "./payloads/hello.schema.json"}}}
+    },
+    {
       "if": {"properties": {"msg_type": {"const": "DISCOVER"}}},
       "then": {"properties": {"payload": {"$ref": "./payloads/discover.schema.json"}}}
     },
@@ -96,6 +115,18 @@
     {
       "if": {"properties": {"msg_type": {"const": "ERROR"}}},
       "then": {"properties": {"payload": {"$ref": "./payloads/error.schema.json"}}}
+    },
+    {
+      "if": {"properties": {"msg_type": {"const": "JOB_ACCEPTED"}}},
+      "then": {"properties": {"payload": {"$ref": "./payloads/job_accepted.schema.json"}}}
+    },
+    {
+      "if": {"properties": {"msg_type": {"const": "JOB_STATUS"}}},
+      "then": {"properties": {"payload": {"$ref": "./payloads/job_status.schema.json"}}}
+    },
+    {
+      "if": {"properties": {"msg_type": {"const": "STREAM_CHUNK"}}},
+      "then": {"properties": {"payload": {"$ref": "./payloads/stream_chunk.schema.json"}}}
     }
   ]
 }

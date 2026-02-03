@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.moltrouter.dev/schemas/mrp/0.1/payloads/stream_chunk.schema.json",
+  "title": "MRP STREAM_CHUNK Payload",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["stream_id", "sequence", "final", "chunk"],
+  "properties": {
+    "stream_id": {"type": "string", "minLength": 3},
+    "sequence": {"type": "integer", "minimum": 0},
+    "final": {"type": "boolean"},
+    "chunk": {"$ref": "../types/input.schema.json"}
+  }
+}
