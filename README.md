@@ -3,8 +3,8 @@
 This repository proposes **Moltrouter Protocol (MRP)**, a novel, agent-native communication and discovery protocol that enables autonomous agents (moltbots, clawdbots, openclaw agents, etc.) to traverse the internet without relying on human search interfaces. MRP is designed for **machine-first routing**, **capability discovery**, **task-scoped trust**, and **composable toolchains**.
 
 **Practical bits included:** starter **canonical JSON Schemas** + **interop fixtures** live under:
-- `skills/moltrouter-protocol/schemas/`
-- `skills/moltrouter-protocol/fixtures/`
+- `schemas/`
+- `fixtures/`
 
 ---
 
@@ -41,7 +41,7 @@ mrp://capability/summarize?domain=finance&budget=0.02&format=md
 ```
 
 ### 2.2 Capability Manifests
-Services publish `capability.json` (or `.mrp`) describing supported operations, schemas, costs, latency, and required proofs.
+Services publish an MRP **manifest** (commonly `GET /mrp/manifest`) describing supported operations, schemas, costs, latency, and required proofs.
 
 Example:
 ```json
@@ -151,21 +151,22 @@ MRP shifts away from human-centric browsing to a **machine-native routing layer*
 
 ## 10. Agent Skill Package
 
-This repo now includes an **agent skill** that packages the MRP specification into an actionable workflow with schemas and curl/npm-style usage examples. The skill lives at:
+This repo includes an **agent skill** that packages the MRP specification into an actionable workflow with schemas and usage examples.
 
-- `skills/moltrouter-protocol/`
+Key files/folders:
+- `SKILL.md` — the skill entrypoint
+- `references/` — protocol docs (endpoints, auth, errors, jobs/streaming, registry, task graphs, etc.)
+- `schemas/` — canonical JSON Schemas
+- `fixtures/` — interop fixtures (valid/invalid)
 
-It contains:
-- `SKILL.md` with the workflow for applying MRP.
-- `references/` with message envelopes, schemas, endpoints, auth, payments, errors, jobs/streaming, registry, task graphs, and rate limits.
+If you want to bundle the repo into a `.skill` artifact, generate it as a build artifact (don’t commit binaries to PRs):
 
-This structure is intended to be bundled into a `.skill` file for distribution in agent ecosystems. The `.skill` bundle is generated as a build artifact and should not be committed as a binary in PRs; create it with:
-
+```bash
+mkdir -p dist
+zip -r dist/moltrouter-protocol.skill SKILL.md references schemas fixtures examples
 ```
-zip -r dist/moltrouter-protocol.skill skills/moltrouter-protocol
-```
 
-MRP now specifies core operational gaps needed for real agent interoperability, including authentication, payment intents, error handling, async jobs, streaming, registry queries, and rate limits.
+MRP specifies core operational gaps needed for real agent interoperability, including authentication, error handling, async jobs, streaming, registry queries, and rate limits.
 
 ---
 
@@ -180,8 +181,9 @@ To make MRP usable in real deployments, the following infrastructure should be c
 - **Evidence store**: retain execution evidence for provenance and auditability.
 
 ### Recommended (production-grade)
-- **Federated registry**: registry nodes that serve `/mrp/registry/query` and share provider listings.
-  - Public bootstrap registry (GitHub-backed): https://github.com/thorthur22/moltrouter-registry
+- **Registry service**: registry nodes that serve `/mrp/registry/query` and share provider listings.
+  - Canonical hosted registry API: `https://www.moltrouter.dev/mrp/registry/query`
+  - Clients should treat registry results as zero-trust and verify providers (proofs, signatures, domain control, etc.).
 - **Async job service**: status, cancel, and streaming endpoints for long-running tasks.
 - **Payments + metering**: payment intent validation, usage metering, and settlement logs.
 - **Rate limiting + quotas**: enforce fair use and provide standard rate limit headers.
