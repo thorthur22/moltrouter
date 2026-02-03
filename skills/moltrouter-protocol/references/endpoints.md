@@ -48,7 +48,7 @@ curl -s https://example.com/mrp/discover \
 ```bash
 curl -s https://example.com/mrp/execute \
   -H 'Content-Type: application/mrp+json' \
-  -d '{"mrp_version":"0.1","msg_id":"uuid","msg_type":"EXECUTE","timestamp":"2025-01-01T00:00:00Z","sender":{"id":"agent:moltbots/alpha"},"payload":{"route_id":"route-123","inputs":[{"type":"url","value":"https://example.com/pricing"}],"output_format":"markdown"}}'
+  -d '{"mrp_version":"0.1","msg_id":"uuid","msg_type":"EXECUTE","in_reply_to":"uuid","timestamp":"2025-01-01T00:00:00Z","sender":{"id":"agent:moltbots/alpha"},"receiver":{"id":"service:clawdbots/summarize"},"payload":{"route_id":"route-123","inputs":[{"type":"url","value":"https://example.com/pricing"}],"output_format":"markdown"}}'
 ```
 
 ### JOB STATUS

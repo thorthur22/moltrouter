@@ -3,6 +3,11 @@
 ## Overview
 MRP is a machine-native protocol for agent discovery, negotiation, and execution. It layers on top of existing transports and standardizes how agents describe intent, discover capabilities, negotiate constraints, and exchange evidence.
 
+## Intent vs Capability
+- **Intent** describes the desired outcome in human or task terms (used in `DISCOVER`).
+- **Capability** names the concrete operation a provider can perform (returned in `OFFER`, invoked in `EXECUTE`).
+- Providers SHOULD map intent to one or more capabilities and be explicit about constraints or required proofs.
+
 ## Content Types
 - `application/mrp+json` for all MRP message envelopes.
 - `application/mrp-manifest+json` for capability manifests.
@@ -13,6 +18,8 @@ MRP is a machine-native protocol for agent discovery, negotiation, and execution
 - Services MUST accept the same major version and SHOULD accept minor versions within the same major.
 - A service MAY reject incompatible versions with `ERROR` code `MRP_VERSION_UNSUPPORTED`.
 - Wire format changes MUST bump major versions; additive fields may bump minor versions.
+- Senders MUST set `mrp_version` to the newest minor they support (currently `0.1`).
+- Responders MUST echo the negotiated version; if multiple minors are supported, respond with the highest common minor and use it for the rest of the exchange. If no common minor exists, return `MRP_VERSION_UNSUPPORTED`.
 - Implementations SHOULD validate envelopes and payloads against canonical JSON Schemas.
 
 ## Addressing
@@ -23,6 +30,8 @@ MRP is a machine-native protocol for agent discovery, negotiation, and execution
 - Every message MUST validate against the envelope schema and the `msg_type` payload schema.
 - Required fields: `mrp_version`, `msg_id`, `msg_type`, `timestamp`, `sender`, `payload`.
 - `msg_id` MUST be unique for a reasonable replay window; `timestamp` MUST be RFC3339 UTC.
+- `in_reply_to` is REQUIRED for `OFFER`, `NEGOTIATE`, `EXECUTE`, `EVIDENCE`, and `ERROR`.
+- `receiver` is REQUIRED for directed messages and MAY be omitted for `HELLO`/`DISCOVER` broadcast.
 - Agents SHOULD enforce size limits and reject payloads that exceed negotiated maxima.
 - Conformance: implementers SHOULD pass fixtures that cover valid/invalid envelopes, payloads, and error codes.
 
@@ -33,6 +42,7 @@ All messages use the same envelope fields:
   "mrp_version": "0.1",
   "msg_id": "uuid",
   "msg_type": "HELLO|DISCOVER|OFFER|NEGOTIATE|EXECUTE|EVIDENCE|JOB_ACCEPTED|JOB_STATUS|STREAM_CHUNK|ERROR",
+  "in_reply_to": "uuid",
   "timestamp": "2025-01-01T00:00:00Z",
   "sender": {"id": "agent:moltbots/alpha", "proofs": ["attestation"]},
   "receiver": {"id": "service:clawdbots/summarize"},

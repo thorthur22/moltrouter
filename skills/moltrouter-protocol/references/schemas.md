@@ -180,6 +180,7 @@ This repo now includes starter schemas under:
   "code": "MRP_RATE_LIMITED",
   "message": "Rate limit exceeded",
   "retryable": true,
-  "retry_after_ms": 5000
+  "retry_after_ms": 5000,
+  "caused_by": "00000000-0000-0000-0000-000000000002"
 }
 ```
