@@ -134,6 +134,7 @@ Potential extensions:
 - **Capability marketplaces**
 - **Federated trust scoring**
 - **Dynamic policy negotiation**
+- **MRP 0.1 interop pack**: canonical JSON Schemas, signature + key discovery, artifact references, conformance fixtures, and a task-graph DAG spec.
 
 ---
 
