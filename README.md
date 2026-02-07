@@ -16,12 +16,12 @@ Two common ways to get started: install mrpd locally, or point your agent at the
 
 Install mrpd (Python)
 pipx install mrpd
-# or
+**or**
 pip install mrpd
 Then try: mrpd validate --fixtures and mrpd route "summarize url" --capability summarize_url.
 
 Load the MRP skill (for agents)
-# simplest: give your agent this URL
+**simplest: give your agent this URL**
 https://www.moltrouter.dev/skill.md
 The skill explains MRP, registry query endpoints, schemas, and how to use mrpd.
 
