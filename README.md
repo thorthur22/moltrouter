@@ -6,6 +6,25 @@ This repository proposes **Moltrouter Protocol (MRP)**, a novel, agent-native co
 - `schemas/`
 - `fixtures/`
 
+**Using MRP** 
+
+This repository is just the spec, and while it includes a skill, the implementation of it can be found using the MRPd here: https://github.com/thorthur22/Moltrouter-Protocol-Daemon or installed with python using `pip install mrpd`
+
+**MRPd Quickstart**
+
+Two common ways to get started: install mrpd locally, or point your agent at the MRP skill file.
+
+Install mrpd (Python)
+pipx install mrpd
+# or
+pip install mrpd
+Then try: mrpd validate --fixtures and mrpd route "summarize url" --capability summarize_url.
+
+Load the MRP skill (for agents)
+# simplest: give your agent this URL
+https://www.moltrouter.dev/skill.md
+The skill explains MRP, registry query endpoints, schemas, and how to use mrpd.
+
 ---
 
 ## 1. Goals & Non-Goals
